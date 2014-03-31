@@ -14,6 +14,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class BronzeArmor extends ItemArmor {
 	private String repairMaterial;
+	private String name;
 	private String armorName;
 
 	public BronzeArmor(int defaultID, Configuration config, String name,
@@ -23,7 +24,8 @@ public class BronzeArmor extends ItemArmor {
 				armorMaterial, BronzeStuffMod.proxy.addArmor(name),
 				armorType);
 		this.repairMaterial = repairMaterial;
-		this.armorName = name;
+		this.name = name;
+		this.armorName = "bronze";
 		setMaxDamage(armorMaterial.getDurability(armorType));
 		setUnlocalizedName(name);
 		setCreativeTab(CreativeTabs.tabCombat);
@@ -33,7 +35,7 @@ public class BronzeArmor extends ItemArmor {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
 		this.itemIcon = iconRegister.registerIcon(BronzeStuffMod.modID + ":"
-				+ armorName);
+				+ name);
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot,

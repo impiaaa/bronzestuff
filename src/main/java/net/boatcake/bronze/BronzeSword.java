@@ -23,6 +23,7 @@ public class BronzeSword extends ItemSword {
 				toolMaterial);
 		this.damage = damage;
 		this.repairMaterial = repairMaterial;
+		this.name = name;
 		setUnlocalizedName(name);
 		setCreativeTab(CreativeTabs.tabCombat);
 		GameRegistry.registerItem(this, name);

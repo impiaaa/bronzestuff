@@ -2,6 +2,7 @@ package net.boatcake.bronze;
 
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemSword;
@@ -9,6 +10,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;

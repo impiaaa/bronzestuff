@@ -20,8 +20,9 @@ public class BronzeAxe extends ItemAxe {
 			String repairMaterial) {
 		super(config.getItem("IDs", name, defaultID).getInt(defaultID),
 				toolMaterial);
-		efficiencyOnProperMaterial = efficiency;
+		this.efficiencyOnProperMaterial = efficiency;
 		this.repairMaterial = repairMaterial;
+		this.name = name;
 		setUnlocalizedName(name);
 		setCreativeTab(CreativeTabs.tabTools);
 		GameRegistry.registerItem(this, name);

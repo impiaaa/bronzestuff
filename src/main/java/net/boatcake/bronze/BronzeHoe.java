@@ -20,6 +20,7 @@ public class BronzeHoe extends ItemHoe {
 		super(config.getItem("IDs", name, defaultID).getInt(defaultID),
 				toolMaterial);
 		this.repairMaterial = repairMaterial;
+		this.name = name;
 		setUnlocalizedName(name);
 		setCreativeTab(CreativeTabs.tabTools);
 		GameRegistry.registerItem(this, name);
