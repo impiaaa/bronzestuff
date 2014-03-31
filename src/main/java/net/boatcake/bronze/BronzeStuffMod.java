@@ -1,5 +1,6 @@
 package net.boatcake.bronze;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -36,6 +37,7 @@ public class BronzeStuffMod {
 	private ItemSword bronzeSword;
 	private ItemTool bronzeShovel;
 	private ItemHoe bronzeHoe;
+	public static Item bronzeHorseArmor;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
@@ -51,6 +53,7 @@ public class BronzeStuffMod {
 	    bronzeChestplate = new BronzeArmor(4643, config, "bronze_chestplate", bronzeArmorMaterial, 1, "ingotBronze");
 	    bronzeLeggings = new BronzeArmor(4644, config, "bronze_leggings", bronzeArmorMaterial, 2, "ingotBronze");
 	    bronzeBoots = new BronzeArmor(4645, config, "bronze_boots", bronzeArmorMaterial, 3, "ingotBronze");
+	    //bronzeHorseArmor = new Item(config.getItem("IDs", "bronze_horse_armor", 4646).getInt(4646)).setUnlocalizedName("bronze_horse_armor").setMaxStackSize(1).setCreativeTab(CreativeTabs.tabMisc).setTextureName("bronze_horse_armor");
 	}
 	
 	@EventHandler
