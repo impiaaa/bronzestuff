@@ -9,12 +9,14 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid=BronzeStuffMod.modID, name="Bronze stuff")
 public class BronzeStuffMod {
@@ -26,7 +28,7 @@ public class BronzeStuffMod {
 	private ItemArmor bronzeLeggings;
 	private ItemArmor bronzeBoots;
 	@SidedProxy(clientSide="net.boatcake.bronze.ClientProxy", serverSide="net.boatcake.bronze.Proxy")
-	public Proxy proxy;
+	public static Proxy proxy;
 	private ItemTool bronzePickaxe;
 	private ItemTool bronzeAxe;
 	private ItemSword bronzeSword;
@@ -51,6 +53,16 @@ public class BronzeStuffMod {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
-		
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzePickaxe, "III", " S ", " S ", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeAxe, "II", "IS", " S", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeAxe, "II", "SI", "S ", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeSword, "I", "I", "S", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeShovel, "I", "S", "S", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeHoe, "II", " S", " S", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeHoe, "II", "S ", "S ", 'I', "ingotBronze", 'S', "stickWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeHelmet, "III", "I I", 'I', "ingotBronze"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeChestplate, "I I", "III", "III", 'I', "ingotBronze"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeLeggings, "III", "I I", "I I", 'I', "ingotBronze"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(bronzeBoots, "I I", "I I", 'I', "ingotBronze"));
 	}
 }
