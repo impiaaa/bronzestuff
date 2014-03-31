@@ -1,0 +1,12 @@
+syntax: glob
+
+build/
+.classpath
+.project
+.gradle/
+eclipse/
+bin/
+*~
+repo/
+.settings/
+

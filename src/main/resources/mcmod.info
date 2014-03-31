@@ -1,0 +1,15 @@
+[
+{
+  "modid": "bronze",
+  "name": "Bronze Stuff",
+  "description": "Adds bronze tools and armor",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["impiaaa"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
