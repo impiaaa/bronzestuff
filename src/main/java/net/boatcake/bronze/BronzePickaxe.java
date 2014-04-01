@@ -18,7 +18,7 @@ public class BronzePickaxe extends ItemPickaxe {
 	public BronzePickaxe(int defaultID, Configuration config, String name,
 			EnumToolMaterial toolMaterial, float efficiency,
 			String repairMaterial) {
-		super(config.getItem("IDs", name, defaultID).getInt(defaultID),
+		super(config.getItem(name, defaultID).getInt(defaultID),
 				toolMaterial);
 		this.efficiencyOnProperMaterial = efficiency;
 		this.repairMaterial = repairMaterial;

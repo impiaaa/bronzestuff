@@ -17,7 +17,7 @@ public class BronzeHoe extends ItemHoe {
 
 	public BronzeHoe(int defaultID, Configuration config, String name,
 			EnumToolMaterial toolMaterial, String repairMaterial) {
-		super(config.getItem("IDs", name, defaultID).getInt(defaultID),
+		super(config.getItem(name, defaultID).getInt(defaultID),
 				toolMaterial);
 		this.repairMaterial = repairMaterial;
 		this.name = name;

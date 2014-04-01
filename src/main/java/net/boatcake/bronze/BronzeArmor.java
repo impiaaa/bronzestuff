@@ -20,7 +20,7 @@ public class BronzeArmor extends ItemArmor {
 	public BronzeArmor(int defaultID, Configuration config, String name,
 			EnumArmorMaterial armorMaterial, int armorType,
 			String repairMaterial) {
-		super(config.getItem("IDs", name, defaultID).getInt(defaultID),
+		super(config.getItem(name, defaultID).getInt(defaultID),
 				armorMaterial, BronzeStuffMod.proxy.addArmor(name),
 				armorType);
 		this.repairMaterial = repairMaterial;

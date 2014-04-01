@@ -19,7 +19,7 @@ public class BronzeSword extends ItemSword {
 	public BronzeSword(int defaultID, Configuration config, String name,
 			EnumToolMaterial toolMaterial, int damage,
 			String repairMaterial) {
-		super(config.getItem("IDs", name, defaultID).getInt(defaultID),
+		super(config.getItem(name, defaultID).getInt(defaultID),
 				toolMaterial);
 		this.damage = damage;
 		this.repairMaterial = repairMaterial;
