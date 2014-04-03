@@ -16,11 +16,9 @@ public class BronzeShovel extends ItemSpade {
 	private String name;
 
 	public BronzeShovel(int defaultID, Configuration config, String name,
-			EnumToolMaterial toolMaterial, float efficiency,
-			String repairMaterial) {
+			EnumToolMaterial toolMaterial, String repairMaterial) {
 		super(config.getItem(name, defaultID).getInt(defaultID),
 				toolMaterial);
-		this.efficiencyOnProperMaterial = efficiency;
 		this.repairMaterial = repairMaterial;
 		this.name = name;
 		setUnlocalizedName(name);

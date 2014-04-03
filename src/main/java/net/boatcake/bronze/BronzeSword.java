@@ -14,14 +14,10 @@ import net.minecraftforge.oredict.OreDictionary;
 public class BronzeSword extends ItemSword {
 	private String repairMaterial;
 	private String name;
-	public int damage;
 
 	public BronzeSword(int defaultID, Configuration config, String name,
-			EnumToolMaterial toolMaterial, int damage,
-			String repairMaterial) {
-		super(config.getItem(name, defaultID).getInt(defaultID),
-				toolMaterial);
-		this.damage = damage;
+			EnumToolMaterial toolMaterial, String repairMaterial) {
+		super(config.getItem(name, defaultID).getInt(defaultID), toolMaterial);
 		this.repairMaterial = repairMaterial;
 		this.name = name;
 		setUnlocalizedName(name);

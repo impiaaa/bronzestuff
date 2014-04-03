@@ -1,6 +1,5 @@
 package net.boatcake.bronze;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -13,13 +12,11 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.EnumHelper;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -50,6 +47,12 @@ public class BronzeStuffMod {
 	private boolean enableTools;
 	private boolean enableArmor;
 
+	private enum MetalMod {
+		IC2, METALLURGY
+	};
+
+	private MetalMod modBalance;
+
 	private final String categoryEnablers = "enablers";
 
 	@EventHandler
@@ -64,18 +67,39 @@ public class BronzeStuffMod {
 				.getBoolean(true);
 		enableArmor = config.get(categoryEnablers, "Enable armor", true)
 				.getBoolean(true);
-		EnumHelper.addToolMaterial("Bronze", 2, 350, 6.0F, 2.0F, 13);
-		EnumArmorMaterial bronzeArmorMaterial = EnumHelper.addArmorMaterial(
-				"Bronze", 15, new int[] { 2, 6, 5, 2 }, 9);
+
+		for (MetalMod m : MetalMod.values()) {
+			if (config.get("balance", m.name(), m == MetalMod.IC2).getBoolean(
+					m == MetalMod.IC2)) {
+				modBalance = m;
+			}
+		}
+
+		EnumArmorMaterial bronzeArmorMaterial;
+		switch (modBalance) {
+		case IC2:
+			EnumHelper.addToolMaterial("Bronze", 2, 350, 5.0F, 2.0F, 13);
+			bronzeArmorMaterial = EnumHelper.addArmorMaterial("Bronze", 15,
+					new int[] { 2, 6, 5, 2 }, 9);
+			break;
+		case METALLURGY:
+			EnumHelper.addToolMaterial("Bronze", 2, 250, 6.0F, 1.0F, 9);
+			bronzeArmorMaterial = EnumHelper.addArmorMaterial("Bronze", 13,
+					new int[] { 2, 4, 3, 3 }, 9);
+			break;
+		default:
+			bronzeArmorMaterial = null;
+			break;
+		}
 		if (enableTools) {
 			bronzePickaxe = new BronzePickaxe(4637, config, "bronze_pickaxe",
-					EnumToolMaterial.IRON, 5.0F, "ingotBronze");
+					EnumToolMaterial.IRON, "ingotBronze");
 			bronzeAxe = new BronzeAxe(4638, config, "bronze_axe",
-					EnumToolMaterial.IRON, 5.0F, "ingotBronze");
+					EnumToolMaterial.IRON, "ingotBronze");
 			bronzeSword = new BronzeSword(4639, config, "bronze_sword",
-					EnumToolMaterial.IRON, 7, "ingotBronze");
+					EnumToolMaterial.IRON, "ingotBronze");
 			bronzeShovel = new BronzeShovel(4640, config, "bronze_shovel",
-					EnumToolMaterial.IRON, 5.0F, "ingotBronze");
+					EnumToolMaterial.IRON, "ingotBronze");
 			bronzeHoe = new BronzeHoe(4641, config, "bronze_hoe",
 					EnumToolMaterial.IRON, "ingotBronze");
 		}

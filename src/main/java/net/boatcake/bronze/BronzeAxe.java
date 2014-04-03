@@ -16,11 +16,10 @@ public class BronzeAxe extends ItemAxe {
 	private String name;
 
 	public BronzeAxe(int defaultID, Configuration config, String name,
-			EnumToolMaterial toolMaterial, float efficiency,
+			EnumToolMaterial toolMaterial,
 			String repairMaterial) {
 		super(config.getItem(name, defaultID).getInt(defaultID),
 				toolMaterial);
-		this.efficiencyOnProperMaterial = efficiency;
 		this.repairMaterial = repairMaterial;
 		this.name = name;
 		setUnlocalizedName(name);
