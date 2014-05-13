@@ -32,11 +32,6 @@ public class BronzeSword extends ItemSword {
 	}
 
 	@Override
-	public int getItemEnchantability() {
-		return 13;
-	}
-
-	@Override
 	public boolean getIsRepairable(ItemStack tool, ItemStack item) {
 		return (item != null)
 				&& (OreDictionary.getOreID(item) == OreDictionary
