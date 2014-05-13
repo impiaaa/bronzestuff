@@ -1,17 +1,17 @@
 package net.boatcake.bronze;
 
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -75,48 +75,53 @@ public class BronzeStuffMod {
 			}
 		}
 
-		EnumArmorMaterial bronzeArmorMaterial;
+		ArmorMaterial bronzeArmorMaterial;
+		ToolMaterial bronzeToolMaterial;
 		switch (modBalance) {
 		case IC2:
-			EnumHelper.addToolMaterial("Bronze", 2, 350, 5.0F, 2.0F, 13);
+			bronzeToolMaterial = EnumHelper.addToolMaterial("Bronze", 2, 350,
+					5.0F, 2.0F, 13);
 			bronzeArmorMaterial = EnumHelper.addArmorMaterial("Bronze", 15,
 					new int[] { 2, 6, 5, 2 }, 9);
 			break;
 		case METALLURGY:
-			EnumHelper.addToolMaterial("Bronze", 2, 250, 6.0F, 1.0F, 9);
+			bronzeToolMaterial = EnumHelper.addToolMaterial("Bronze", 2, 250,
+					6.0F, 1.0F, 9);
 			bronzeArmorMaterial = EnumHelper.addArmorMaterial("Bronze", 13,
 					new int[] { 2, 4, 3, 3 }, 9);
 			break;
 		default:
 			bronzeArmorMaterial = null;
+			bronzeToolMaterial = null;
 			break;
 		}
 		if (enableTools) {
-			bronzePickaxe = new BronzePickaxe(4637, config, "bronze_pickaxe",
-					EnumToolMaterial.IRON, "ingotBronze");
-			bronzeAxe = new BronzeAxe(4638, config, "bronze_axe",
-					EnumToolMaterial.IRON, "ingotBronze");
-			bronzeSword = new BronzeSword(4639, config, "bronze_sword",
-					EnumToolMaterial.IRON, "ingotBronze");
-			bronzeShovel = new BronzeShovel(4640, config, "bronze_shovel",
-					EnumToolMaterial.IRON, "ingotBronze");
-			bronzeHoe = new BronzeHoe(4641, config, "bronze_hoe",
-					EnumToolMaterial.IRON, "ingotBronze");
+			bronzePickaxe = new BronzePickaxe(config, "bronze_pickaxe",
+					bronzeToolMaterial, "ingotBronze");
+			bronzeAxe = new BronzeAxe(config, "bronze_axe", bronzeToolMaterial,
+					"ingotBronze");
+			bronzeSword = new BronzeSword(config, "bronze_sword",
+					bronzeToolMaterial, "ingotBronze");
+			bronzeShovel = new BronzeShovel(config, "bronze_shovel",
+					bronzeToolMaterial, "ingotBronze");
+			bronzeHoe = new BronzeHoe(config, "bronze_hoe", bronzeToolMaterial,
+					"ingotBronze");
 		}
 		if (enableArmor) {
-			bronzeHelmet = new BronzeArmor(4642, config, "bronze_helmet",
+			bronzeHelmet = new BronzeArmor(config, "bronze_helmet",
 					bronzeArmorMaterial, 0, "ingotBronze");
-			bronzeChestplate = new BronzeArmor(4643, config,
-					"bronze_chestplate", bronzeArmorMaterial, 1, "ingotBronze");
-			bronzeLeggings = new BronzeArmor(4644, config, "bronze_leggings",
+			bronzeChestplate = new BronzeArmor(config, "bronze_chestplate",
+					bronzeArmorMaterial, 1, "ingotBronze");
+			bronzeLeggings = new BronzeArmor(config, "bronze_leggings",
 					bronzeArmorMaterial, 2, "ingotBronze");
-			bronzeBoots = new BronzeArmor(4645, config, "bronze_boots",
+			bronzeBoots = new BronzeArmor(config, "bronze_boots",
 					bronzeArmorMaterial, 3, "ingotBronze");
 		}
-//		bronzeHorseArmor = new Item(config.getItem("IDs", "bronze_horse_armor",
-//				4646).getInt(4646)).setUnlocalizedName("bronze_horse_armor")
-//				.setMaxStackSize(1).setCreativeTab(CreativeTabs.tabMisc)
-//				.setTextureName("bronze_horse_armor");
+		// bronzeHorseArmor = new Item(config.getItem("IDs",
+		// "bronze_horse_armor",
+		// 4646).getInt(4646)).setUnlocalizedName("bronze_horse_armor")
+		// .setMaxStackSize(1).setCreativeTab(CreativeTabs.tabMisc)
+		// .setTextureName("bronze_horse_armor");
 		if (config.hasChanged()) {
 			config.save();
 		}

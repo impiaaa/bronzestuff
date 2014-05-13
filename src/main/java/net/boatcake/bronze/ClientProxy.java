@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends Proxy {
+	@Override
 	public int addArmor(String name) {
 		return RenderingRegistry.addNewArmourRendererPrefix(name);
 	}
